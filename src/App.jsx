@@ -1,10 +1,24 @@
+import { useEffect } from "react";
 
 export default function App(){
+  // helper para scroll suave
+  useEffect(() => {
+    window.__scrollTo = (sel) => {
+      const el = document.querySelector(sel);
+      if (el) el.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    };
+  }, []);
+
   return (
     <div>
+      {/* NAV */}
       <nav className="nav">
         <div className="container nav-inner">
-          <div className="brand">TuMarca Marbella</div>
+          {/* BRAND: cambia el texto por el logo */}
+          <a className="brand" href="#inicio" onClick={e=>{e.preventDefault();window.__scrollTo('#inicio')}}>
+            <img src="/brand/ankome-logo.svg" alt="ANKOME REAL ESTATE" style={{height:28, display:'block'}} />
+          </a>
+
           <div className="menu">
             <a href="#inicio" onClick={e=>{e.preventDefault();window.__scrollTo('#inicio')}}>Inicio</a>
             <a href="#servicios" onClick={e=>{e.preventDefault();window.__scrollTo('#servicios')}}>Servicios</a>
@@ -14,14 +28,27 @@ export default function App(){
         </div>
       </nav>
 
-      <header id="inicio" className="hero">
-        <div className="container">
-          <h1>Intermediación inmobiliaria de <span style={{color:'var(--gold)'}}>alto nivel</span> en Marbella</h1>
+      {/* HERO con VIDEO */}
+      <header id="inicio" className="hero-video-wrap">
+        <video
+          className="hero-video"
+          src="/hero.mp4"
+          poster="/hero-poster.jpg"
+          autoPlay
+          muted
+          loop
+          playsInline
+        />
+        <div className="hero-overlay" />
+        <div className="container hero-content">
+          <img src="/brand/ankome-logo.svg" alt="ANKOME REAL ESTATE" style={{height:40, marginBottom:14}} />
+          <h1>Intermediación inmobiliaria de <span className="gold">alto nivel</span> en Marbella</h1>
           <p>Vendemos con discreción, marketing premium y seguridad jurídica. Te acompañamos de principio a fin con un trato boutique y transparente.</p>
           <div style={{display:'flex',gap:12,flexWrap:'wrap'}}>
             <a className="btn" href="#contacto" onClick={e=>{e.preventDefault();window.__scrollTo('#contacto')}}>Quiero vender</a>
             <a className="btn btn-outline" href="#contacto" onClick={e=>{e.preventDefault();window.__scrollTo('#contacto')}}>Busco comprar</a>
           </div>
+
           <div className="stats">
             <div className="stat"><div className="n">3–5 %</div><div className="small">Comisión transparente</div></div>
             <div className="stat"><div className="n">48 h</div><div className="small">Listados publicados</div></div>
@@ -31,6 +58,7 @@ export default function App(){
         </div>
       </header>
 
+      {/* SERVICIOS */}
       <section id="servicios" className="section">
         <div className="container">
           <h2 style={{margin:'0 0 8px'}}>Servicios</h2>
@@ -43,6 +71,7 @@ export default function App(){
         </div>
       </section>
 
+      {/* ZONAS */}
       <section id="zonas" className="section zones">
         <div className="container">
           <h2 style={{margin:'0 0 8px'}}>Zonas clave</h2>
@@ -55,6 +84,7 @@ export default function App(){
         </div>
       </section>
 
+      {/* CONTACTO */}
       <section id="contacto" className="section">
         <div className="container grid-2">
           <div>
@@ -87,9 +117,10 @@ export default function App(){
         </div>
       </section>
 
+      {/* FOOTER */}
       <footer>
         <div className="container" style={{display:'flex',justifyContent:'space-between',flexWrap:'wrap',gap:12}}>
-          <div>© {new Date().getFullYear()} TuMarca Marbella</div>
+          <div>© {new Date().getFullYear()} ANKOME REAL ESTATE</div>
           <div className="small">Aviso legal · Privacidad · Cookies</div>
         </div>
       </footer>

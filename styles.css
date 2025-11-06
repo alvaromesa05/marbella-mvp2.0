@@ -76,3 +76,15 @@ footer{padding:28px 0;color:var(--muted)}
   .hero-video{ display:none; }
   .hero-video-wrap{ background: #0c0c0c url('/hero-poster.jpg') center/cover no-repeat; }
 }
+/* 1) Asegurar tamaño del logo del nav */
+.brand img{ height:28px; display:block }
+
+/* 2) Subir un pelín el contraste del texto sobre vídeo */
+.hero-content{ text-shadow: 0 1px 12px rgba(0,0,0,.25) }
+
+/* 3) Hover elegante en botones */
+.btn:hover{ filter: brightness(1.05); transform: translateY(-1px); transition:.2s }
+.btn.btn-outline:hover{ border-color: var(--gold); color: var(--gold) }
+
+/* 4) Suavizar bordes de tarjetas */
+.card{ box-shadow: 0 6px 24px rgba(0,0,0,.18) }
